@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.babypet.dtos.commands.ClienteInsertCommand;
 import br.com.babypet.dtos.commands.ClienteUpdateCommand;
+import br.com.babypet.utils.exceptions.BadRequestException;
 
 @Document(collection = "cliente")
 public class Cliente {
@@ -37,6 +38,12 @@ public class Cliente {
 
 	public Cliente(ClienteInsertCommand command) {
 
+	/*if (command.getCpf().length() > 11) {
+		throw new BadRequestException("CPF Inválido");
+	}*/
+
+		command.validate();
+		
 		this.nome = command.getNome();
 		this.cpf = command.getCpf();
 		this.email = command.getEmail();

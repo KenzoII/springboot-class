@@ -14,10 +14,10 @@ public class ClienteItemModel {
 	public String getNomeCliente() {
 		return nomeCliente;
 	}
-	
-	public static ClienteItemModel of (Cliente cliente) {
+
+	public static ClienteItemModel of(Cliente cliente) {
 		ClienteItemModel model = new ClienteItemModel();
-		
+
 		model.idCliente = cliente.getId();
 		model.nomeCliente = cliente.getNome();
 		return model;
